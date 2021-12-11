@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectScript : MonoBehaviour
 {
-  public enum ObjectType { Bomb, Fruit, PowerUp };
+  public enum ObjectType { Bomb, Fruit, Shield };
 
   public float fallingSpeed;
   private BoxCollider2D hitbox;
@@ -16,6 +16,7 @@ public class ObjectScript : MonoBehaviour
   public ScoreManagerScript scoreManager;
 
   public PlayerHealth ph;
+  public PowerUpPlayer pu;
 
   public ObjectType objectType = ObjectType.Fruit;
   // Start is called before the first frame update
@@ -23,6 +24,7 @@ public class ObjectScript : MonoBehaviour
   {
     playerHigh = GameObject.Find("Player").GetComponentInChildren<Transform>();
     ph = GameObject.Find("Player").GetComponent<PlayerHealth>();
+    pu = GameObject.Find("Player").GetComponent<PowerUpPlayer>();
 
     ground = GameObject.Find("Ground").GetComponent<Transform>();
     spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
@@ -52,7 +54,6 @@ public class ObjectScript : MonoBehaviour
   //Collision with player
   private void OnTriggerEnter2D(Collider2D other)
   {
-    Debug.Log("Collision detected");
     if (other.gameObject.CompareTag("Player") && (playerHigh.position.y <= objectLow.position.y))
     {
       if (objectType == ObjectType.Fruit)
@@ -62,6 +63,11 @@ public class ObjectScript : MonoBehaviour
       else if (objectType == ObjectType.Bomb)
       {
         ph.reduceHealth();
+      }
+      else
+      {
+        Debug.Log("Got power up");
+        pu.applyShield();
       }
       Destroy(gameObject);
     }

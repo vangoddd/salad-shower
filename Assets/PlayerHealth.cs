@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
   public int health = 3;
+  public bool isShield = false;
   // Start is called before the first frame update
   void Start()
   {
@@ -19,7 +20,16 @@ public class PlayerHealth : MonoBehaviour
 
   public void reduceHealth()
   {
-    health -= 1;
+    if (!isShield)
+    {
+      health -= 1;
+    }
+    else
+    {
+      isShield = false;
+      GetComponent<PowerUpPlayer>().curPowerUp = PowerUpPlayer.PowerUp.None;
+    }
+
     if (health < 1)
     {
       die();

@@ -11,8 +11,13 @@ public class FruitSpawnerScript : MonoBehaviour
   public GameObject fruitPrefab;
   public GameObject bombPrefab;
 
+  public List<GameObject> puPrefab;
+
   private int bombCounter = 0;
   public int bombInterval = 2;
+
+  public float puInterval = 5;
+  private float puCounter = 0;
   // Start is called before the first frame update
   void Start()
   {
@@ -22,6 +27,13 @@ public class FruitSpawnerScript : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
+    puCounter += Time.deltaTime;
+    if (puCounter >= puInterval)
+    {
+      GameObject pu = Instantiate(puPrefab[Random.Range(0, puPrefab.Count)], new Vector3(Random.Range(-8f, 8f), 5, 0), Quaternion.identity);
+      pu.GetComponent<ObjectScript>().setSpeed(fallSpeed);
+      puCounter = 0;
+    }
     if (Time.time - lastTime >= spawnInterval)
     {
       GameObject temp;
