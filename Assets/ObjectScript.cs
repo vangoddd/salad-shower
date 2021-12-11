@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectScript : MonoBehaviour
 {
-  public enum ObjectType { Bomb, Fruit, Shield, Expand };
+  public enum ObjectType { Bomb, Fruit, Shield, Expand, BonusFruit, BonusPU };
 
   public float fallingSpeed;
   private BoxCollider2D hitbox;
@@ -56,7 +56,7 @@ public class ObjectScript : MonoBehaviour
   {
     if (other.gameObject.CompareTag("Player") && (playerHigh.position.y <= objectLow.position.y))
     {
-      if (objectType == ObjectType.Fruit)
+      if (objectType == ObjectType.Fruit || objectType == ObjectType.BonusFruit)
       {
         scoreManager.addScore();
       }
@@ -68,6 +68,7 @@ public class ObjectScript : MonoBehaviour
       {
         if (objectType == ObjectType.Shield) pu.applyShield();
         else if (objectType == ObjectType.Expand) pu.applyExpand();
+        else if (objectType == ObjectType.BonusPU) pu.applyBonus();
       }
       Destroy(gameObject);
     }

@@ -185,6 +185,7 @@ MonoBehaviour:
   ph: {fileID: 798446064163842157}
   puDuration: 20
   curPowerUp: 0
+  bonusDur: 2
 --- !u!114 &129694630488439804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,3 +202,4 @@ MonoBehaviour:
   - {fileID: -5852979021777683515, guid: 25cd6c645fcab16459f2cae53d341e55, type: 3}
   - {fileID: 443846902948484877, guid: 25cd6c645fcab16459f2cae53d341e55, type: 3}
   - {fileID: 7189758012851321721, guid: 25cd6c645fcab16459f2cae53d341e55, type: 3}
+  - {fileID: 6784656694645259610, guid: 25cd6c645fcab16459f2cae53d341e55, type: 3}

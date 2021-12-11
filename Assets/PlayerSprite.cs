@@ -25,6 +25,10 @@ public class PlayerSprite : MonoBehaviour
     {
       spriteRenderer.sprite = spriteList[2];
     }
+    else if (pu.getCurPowerUp() == PowerUpPlayer.PowerUp.Bonus)
+    {
+      spriteRenderer.sprite = spriteList[3];
+    }
     else
     {
       spriteRenderer.sprite = spriteList[0];
