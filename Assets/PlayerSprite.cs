@@ -21,6 +21,10 @@ public class PlayerSprite : MonoBehaviour
     {
       spriteRenderer.sprite = spriteList[1];
     }
+    else if (pu.getCurPowerUp() == PowerUpPlayer.PowerUp.Expand)
+    {
+      spriteRenderer.sprite = spriteList[2];
+    }
     else
     {
       spriteRenderer.sprite = spriteList[0];

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectScript : MonoBehaviour
 {
-  public enum ObjectType { Bomb, Fruit, Shield };
+  public enum ObjectType { Bomb, Fruit, Shield, Expand };
 
   public float fallingSpeed;
   private BoxCollider2D hitbox;
@@ -66,8 +66,8 @@ public class ObjectScript : MonoBehaviour
       }
       else
       {
-        Debug.Log("Got power up");
-        pu.applyShield();
+        if (objectType == ObjectType.Shield) pu.applyShield();
+        else if (objectType == ObjectType.Expand) pu.applyExpand();
       }
       Destroy(gameObject);
     }
