@@ -429,7 +429,7 @@ MonoBehaviour:
   - {fileID: 6594961930883549497, guid: a6fbff3f035e4c442931fe4d3aa8a044, type: 3}
   - {fileID: 6377832901324857908, guid: 0b3e2546ab44cd049ba5cc17f2db77c6, type: 3}
   bombInterval: 2
-  puInterval: 30
+  puInterval: 15
 --- !u!4 &667054793
 Transform:
   m_ObjectHideFlags: 0
@@ -1136,6 +1136,10 @@ PrefabInstance:
     - target: {fileID: 8510639268808673831, guid: 641623f2516f6104e8d2bada0fbc8203, type: 3}
       propertyPath: bonusDur
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510639268808673831, guid: 641623f2516f6104e8d2bada0fbc8203, type: 3}
+      propertyPath: puDuration
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8510639268808673831, guid: 641623f2516f6104e8d2bada0fbc8203, type: 3}
       propertyPath: spriteList.Array.size
