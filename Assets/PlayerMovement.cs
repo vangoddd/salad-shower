@@ -18,6 +18,11 @@ public class PlayerMovement : MonoBehaviour
   {
 
     Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    if (Input.touchCount > 0)
+    {
+      Touch touch = Input.GetTouch(0);
+      worldPosition = Camera.main.ScreenToWorldPoint(touch.position);
+    }
     if (worldPosition.x != lastXPos)
     {
       if (worldPosition.x > lastXPos)

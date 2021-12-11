@@ -18,6 +18,8 @@ public class ObjectScript : MonoBehaviour
   public PlayerHealth ph;
   public PowerUpPlayer pu;
 
+  public GameObject explotionPrefab, tenPts, fivePts;
+
   public ObjectType objectType = ObjectType.Fruit;
   // Start is called before the first frame update
   void Start()
@@ -58,11 +60,22 @@ public class ObjectScript : MonoBehaviour
     {
       if (objectType == ObjectType.Fruit || objectType == ObjectType.BonusFruit)
       {
-        scoreManager.addScore();
+        if (objectType == ObjectType.Fruit)
+        {
+          Instantiate(tenPts, transform.position, Quaternion.identity);
+          scoreManager.addScore(10);
+
+        }
+        else
+        {
+          Instantiate(fivePts, transform.position, Quaternion.identity);
+          scoreManager.addScore(5);
+        }
       }
       else if (objectType == ObjectType.Bomb)
       {
         ph.reduceHealth();
+        Instantiate(explotionPrefab, transform.position, Quaternion.identity);
       }
       else
       {

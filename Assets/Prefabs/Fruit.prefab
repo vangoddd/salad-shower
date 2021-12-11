@@ -135,6 +135,9 @@ MonoBehaviour:
   scoreManager: {fileID: 0}
   ph: {fileID: 0}
   pu: {fileID: 0}
+  explotionPrefab: {fileID: 0}
+  tenPts: {fileID: 1611080792426423099, guid: 3ae61f2a7abce24459f5aec7dbd1ebfe, type: 3}
+  fivePts: {fileID: 0}
   objectType: 1
 --- !u!50 &3660381663042614511
 Rigidbody2D:

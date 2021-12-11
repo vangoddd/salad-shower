@@ -2,27 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreManagerScript : MonoBehaviour
+public class HelpButton : MonoBehaviour
 {
-  private int playerScore;
+  public GameObject tutorialOverlay;
   // Start is called before the first frame update
   void Start()
   {
-    playerScore = 0;
+
   }
 
   // Update is called once per frame
   void Update()
   {
+
   }
 
-  public void addScore(int score)
+  public void onClick()
   {
-    playerScore += score;
-  }
-
-  public int getScore()
-  {
-    return playerScore;
+    tutorialOverlay.SetActive(true);
   }
 }

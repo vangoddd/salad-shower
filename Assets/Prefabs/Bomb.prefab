@@ -203,4 +203,6 @@ MonoBehaviour:
   ground: {fileID: 0}
   scoreManager: {fileID: 0}
   ph: {fileID: 0}
+  pu: {fileID: 0}
+  explotionPrefab: {fileID: 3159858765679293303, guid: 946098c91797f794dbdb056e64a288a6, type: 3}
   objectType: 0

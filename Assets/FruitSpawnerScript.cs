@@ -12,6 +12,8 @@ public class FruitSpawnerScript : MonoBehaviour
   public GameObject bombPrefab;
   public GameObject bonusFruitPrefab;
 
+  public GameObject explotionPrefab;
+
   public List<GameObject> puPrefab;
 
   private int bombCounter = 0;
