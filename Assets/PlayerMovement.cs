@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
   private float lastXPos;
   private SpriteRenderer spriteRenderer;
+  public GameObject gameOver;
   // Start is called before the first frame update
   void Start()
   {
@@ -16,6 +17,10 @@ public class PlayerMovement : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
+    if (gameOver.activeSelf)
+    {
+      return;
+    }
 
     Vector3 worldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     if (Input.touchCount > 0)

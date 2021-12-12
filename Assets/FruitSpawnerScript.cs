@@ -37,6 +37,11 @@ public class FruitSpawnerScript : MonoBehaviour
     lastTime = Time.time;
   }
 
+  bool shouldSpawnBomb(float chance)
+  {
+    return Random.Range(0f, 100f) < chance;
+  }
+
   // Update is called once per frame
   void Update()
   {
@@ -75,7 +80,7 @@ public class FruitSpawnerScript : MonoBehaviour
       delay = 0;
       GameObject temp;
       lastTime = Time.time;
-      if (bombCounter == bombInterval)
+      if (shouldSpawnBomb(33))
       {
         Debug.Log("spawning bomb");
         temp = Instantiate(bombPrefab, new Vector3(Random.Range(-8f, 8f), 5, 0), Quaternion.identity);

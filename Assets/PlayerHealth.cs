@@ -7,6 +7,11 @@ public class PlayerHealth : MonoBehaviour
 {
   public int health = 3;
   public bool isShield = false;
+
+  public ScoreManagerScript scoreManager;
+  public GameObject gameOverPopUp;
+
+  public GameObject bgm;
   // Start is called before the first frame update
   void Start()
   {
@@ -44,7 +49,14 @@ public class PlayerHealth : MonoBehaviour
 
   private void die()
   {
-    Debug.Log("player died");
-    SceneManager.LoadScene(0);
+    SoundManagerScript.Instance.Play(4);
+    Time.timeScale = 0;
+    Destroy(bgm, 0f);
+    gameOverPopUp.SetActive(true);
+
+    if (scoreManager.getScore() > PlayerPrefs.GetInt("highscore", 0))
+    {
+      PlayerPrefs.SetInt("highscore", scoreManager.getScore());
+    }
   }
 }

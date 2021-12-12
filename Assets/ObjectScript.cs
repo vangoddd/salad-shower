@@ -47,6 +47,7 @@ public class ObjectScript : MonoBehaviour
     {
       if (objectType == ObjectType.Fruit)
       {
+        SoundManagerScript.Instance.Play(1);
         ph.reduceHealth();
       }
       Destroy(gameObject);
@@ -64,21 +65,24 @@ public class ObjectScript : MonoBehaviour
         {
           Instantiate(tenPts, transform.position, Quaternion.identity);
           scoreManager.addScore(10);
-
+          SoundManagerScript.Instance.Play(2);
         }
         else
         {
           Instantiate(fivePts, transform.position, Quaternion.identity);
           scoreManager.addScore(5);
+          SoundManagerScript.Instance.Play(2);
         }
       }
       else if (objectType == ObjectType.Bomb)
       {
         ph.reduceHealth();
         Instantiate(explotionPrefab, transform.position, Quaternion.identity);
+        SoundManagerScript.Instance.Play(0);
       }
       else
       {
+        SoundManagerScript.Instance.Play(3);
         if (objectType == ObjectType.Shield) pu.applyShield();
         else if (objectType == ObjectType.Expand) pu.applyExpand();
         else if (objectType == ObjectType.BonusPU) pu.applyBonus();
