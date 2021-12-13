@@ -31,10 +31,16 @@ public class FruitSpawnerScript : MonoBehaviour
 
   private float timeSinceStart = 0f;
 
+  float worldScreenHeight, worldScreenWidth, padding;
+
   // Start is called before the first frame update
   void Start()
   {
     lastTime = Time.time;
+
+    worldScreenHeight = Camera.main.orthographicSize * 2f;
+    worldScreenWidth = worldScreenHeight / Screen.height * Screen.width;
+    padding = 0.5f;
   }
 
   bool shouldSpawnBomb(float chance)
@@ -57,7 +63,7 @@ public class FruitSpawnerScript : MonoBehaviour
       if (bonusTimeCounter >= bonusFruitInterval)
       {
         Debug.Log("spawning Bonus fruit");
-        GameObject bFruit = Instantiate(bonusFruitPrefab, new Vector3(Random.Range(-8f, 8f), 5, 0), Quaternion.identity);
+        GameObject bFruit = Instantiate(bonusFruitPrefab, new Vector3(Random.Range(-(worldScreenWidth / 2) + padding, (worldScreenWidth / 2) - padding), 5, 0), Quaternion.identity);
         bFruit.GetComponent<ObjectScript>().setSpeed(fallSpeed);
         bonusTimeCounter = 0f;
       }
@@ -68,7 +74,7 @@ public class FruitSpawnerScript : MonoBehaviour
     if (puCounter >= puInterval)
     {
       int choice = Random.Range(0, puPrefab.Count);
-      GameObject pu = Instantiate(puPrefab[choice], new Vector3(Random.Range(-8f, 8f), 5, 0), Quaternion.identity);
+      GameObject pu = Instantiate(puPrefab[choice], new Vector3(Random.Range(-(worldScreenWidth / 2) + padding, (worldScreenWidth / 2) - padding), 5, 0), Quaternion.identity);
       pu.GetComponent<ObjectScript>().setSpeed(fallSpeed);
 
       delay += spawnInterval;
@@ -83,13 +89,13 @@ public class FruitSpawnerScript : MonoBehaviour
       if (shouldSpawnBomb(33))
       {
         Debug.Log("spawning bomb");
-        temp = Instantiate(bombPrefab, new Vector3(Random.Range(-8f, 8f), 5, 0), Quaternion.identity);
+        temp = Instantiate(bombPrefab, new Vector3(Random.Range(-(worldScreenWidth / 2) + padding, (worldScreenWidth / 2) - padding), 5, 0), Quaternion.identity);
         bombCounter = 0;
       }
       else
       {
         Debug.Log("spawning fruit");
-        temp = Instantiate(fruitPrefab, new Vector3(Random.Range(-8f, 8f), 5, 0), Quaternion.identity);
+        temp = Instantiate(fruitPrefab, new Vector3(Random.Range(-(worldScreenWidth / 2) + padding, (worldScreenWidth / 2) - padding), 5, 0), Quaternion.identity);
         bombCounter++;
       }
       temp.GetComponent<ObjectScript>().setSpeed(fallSpeed);

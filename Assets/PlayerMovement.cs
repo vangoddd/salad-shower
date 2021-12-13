@@ -7,11 +7,17 @@ public class PlayerMovement : MonoBehaviour
   private float lastXPos;
   private SpriteRenderer spriteRenderer;
   public GameObject gameOver;
+
+  float worldScreenHeight, worldScreenWidth, padding;
   // Start is called before the first frame update
   void Start()
   {
     lastXPos = transform.position.x;
     spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+
+    worldScreenHeight = Camera.main.orthographicSize * 2f;
+    worldScreenWidth = worldScreenHeight / Screen.height * Screen.width;
+    padding = spriteRenderer.sprite.bounds.size.x / 4;
   }
 
   // Update is called once per frame
@@ -42,7 +48,9 @@ public class PlayerMovement : MonoBehaviour
       }
     }
 
-    transform.position = new Vector3(Mathf.Clamp(worldPosition.x, -8f, 8f), -4, 0);
+
+
+    transform.position = new Vector3(Mathf.Clamp(worldPosition.x, -(worldScreenWidth / 2) + padding, (worldScreenWidth / 2) - padding), -4, 0);
 
     lastXPos = worldPosition.x;
   }
